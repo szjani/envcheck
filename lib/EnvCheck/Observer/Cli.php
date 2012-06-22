@@ -1,5 +1,5 @@
 <?php
-namespace EnvCheck\Writer;
+namespace EnvCheck\Observer;
 use EnvCheck\CheckerObserver;
 use EnvCheck\Result;
 
@@ -7,7 +7,7 @@ use EnvCheck\Result;
  * Print the result
  *
  * @category    EnvCheck
- * @package     Writer
+ * @package     Observer
  * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @author      Szurovecz János <szjani@szjani.hu>
  */
