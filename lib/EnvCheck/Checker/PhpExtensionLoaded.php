@@ -11,7 +11,7 @@ use EnvCheck\Result;
  * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @author      Szurovecz János <szjani@szjani.hu>
  */
-class ExtensionLoaded extends AbstractChecker {
+class PhpExtensionLoaded extends AbstractChecker {
   
   protected $extensionName;
   
