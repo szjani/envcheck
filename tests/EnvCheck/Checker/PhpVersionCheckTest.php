@@ -6,7 +6,7 @@ class PhpVersionCheck extends PHPUnit_Framework_TestCase {
   
   public function testValidCheck() {
     /* @var $checker EnvCheck\Checker */
-    $checker = self::getMock('\EnvCheck\Checker\PhpVersion', array('getCurrentVersion'), array(1, '5.3', '>='));
+    $checker = self::getMock('\EnvCheck\Checker\PhpVersion', array('getCurrentVersion'), array('5.3', '>='));
     $checker
       ->expects(self::once())
       ->method('getCurrentVersion')
@@ -17,7 +17,7 @@ class PhpVersionCheck extends PHPUnit_Framework_TestCase {
   
   public function testInvalidCheck() {
     /* @var $checker EnvCheck\Checker */
-    $checker = self::getMock('\EnvCheck\Checker\PhpVersion', array('getCurrentVersion'), array(1, '5.4', '>='));
+    $checker = self::getMock('\EnvCheck\Checker\PhpVersion', array('getCurrentVersion'), array('5.4', '>='));
     $checker
       ->expects(self::once())
       ->method('getCurrentVersion')
