@@ -38,6 +38,6 @@ class ExtensionLoaded extends AbstractChecker {
     return $this->createResult(
       sprintf("Whether PHP extension '%s' has been loaded", $this->extensionName),
       $this->isLoaded() 
-   );
+    );
   }
 }
