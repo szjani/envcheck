@@ -46,7 +46,7 @@ class PhpVersion extends AbstractChecker {
   protected function currentCheck() {
     $phpVersion = $this->getCurrentVersion();
     return $this->createResult(
-      "Your current PHP version is " . $phpVersion,
+      sprintf("Your current PHP version is %s, expected to be %s %s", $phpVersion, $this->operator, $this->version),
       version_compare($phpVersion, $this->version, $this->operator)
     );
   }
