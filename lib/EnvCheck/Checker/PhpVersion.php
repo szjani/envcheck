@@ -26,11 +26,11 @@ class PhpVersion extends AbstractChecker {
   
   /**
    * 
-   * @param int $priority
    * @param string $version
    * @param string $operator
+   * @param int $priority
    */
-  public function __construct($priority, $version, $operator) {
+  public function __construct($version, $operator, $priority = 1) {
     parent::__construct($priority);
     $this->version = $version;
     $this->operator = $operator;
