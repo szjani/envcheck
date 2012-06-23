@@ -12,7 +12,7 @@ class AbstractCheckerTest extends PHPUnit_Framework_TestCase {
     $res = new Result\Success("success", 1);
     $checker = $this->getMock('EnvCheck\AbstractChecker', array('currentCheck'), array(1));
     $checker
-      ->expects(self::once())
+      ->expects($this->once())
       ->method('currentCheck')
       ->will($this->returnValue($res));
     $this->checker = $checker;
@@ -26,7 +26,7 @@ class AbstractCheckerTest extends PHPUnit_Framework_TestCase {
   public function testAddObserver() {
     $observer = $this->getMock('EnvCheck\CheckerObserver', array('notify'));
     $observer
-      ->expects(self::once())
+      ->expects($this->once())
       ->method('notify')
       ->with($this->res);
     $this->checker->addObserver($observer);

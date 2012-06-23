@@ -21,7 +21,7 @@ class CompositeTest extends PHPUnit_Framework_TestCase {
     $insideRes = new \EnvCheck\Result\Failed("failed", 1);
     $checker = $this->getMock('EnvCheck\Checker', array('check'));
     $checker
-      ->expects(self::once())
+      ->expects($this->once())
       ->method('check')
       ->will($this->returnValue($insideRes));
     
@@ -33,14 +33,14 @@ class CompositeTest extends PHPUnit_Framework_TestCase {
     $insideRes1 = new \EnvCheck\Result\Failed("failed", 1);
     $checker1 = $this->getMock('EnvCheck\Checker', array('check'));
     $checker1
-      ->expects(self::once())
+      ->expects($this->once())
       ->method('check')
       ->will($this->returnValue($insideRes1));
     
     $insideRes2 = new \EnvCheck\Result\Success("success", 2);
     $checker2 = $this->getMock('EnvCheck\Checker', array('check'));
     $checker2
-      ->expects(self::once())
+      ->expects($this->once())
       ->method('check')
       ->will($this->returnValue($insideRes2));
     
@@ -53,14 +53,14 @@ class CompositeTest extends PHPUnit_Framework_TestCase {
     $insideRes1 = new \EnvCheck\Result\Failed("failed", 1);
     $checker1 = $this->getMock('EnvCheck\Checker', array('check'));
     $checker1
-      ->expects(self::once())
+      ->expects($this->once())
       ->method('check')
       ->will($this->returnValue($insideRes1));
     
     $insideRes2 = new \EnvCheck\Result\Success("success", 2);
     $checker2 = $this->getMock('EnvCheck\Checker', array('check'));
     $checker2
-      ->expects(self::never())
+      ->expects($this->never())
       ->method('check')
       ->will($this->returnValue($insideRes2));
     
@@ -75,13 +75,13 @@ class CompositeTest extends PHPUnit_Framework_TestCase {
     
     $checker = $this->getMock('EnvCheck\Checker', array('check'));
     $checker
-      ->expects(self::once())
+      ->expects($this->once())
       ->method('check')
       ->will($this->returnValue($insideRes));
     
     $observer = $this->getMock('EnvCheck\CheckerObserver', array('notify'));
     $observer
-      ->expects(self::exactly(2))
+      ->expects($this->exactly(2))
       ->method('notify')
       ->will($this->returnCallback(function() use ($insideRes) {
         static $counter = 1;

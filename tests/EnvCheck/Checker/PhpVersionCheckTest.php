@@ -8,7 +8,7 @@ class PhpVersionCheck extends PHPUnit_Framework_TestCase {
     /* @var $checker EnvCheck\Checker */
     $checker = self::getMock('\EnvCheck\Checker\PhpVersion', array('getCurrentVersion'), array('5.3', '>='));
     $checker
-      ->expects(self::once())
+      ->expects($this->once())
       ->method('getCurrentVersion')
       ->will($this->returnValue('5.3'));
       
@@ -19,7 +19,7 @@ class PhpVersionCheck extends PHPUnit_Framework_TestCase {
     /* @var $checker EnvCheck\Checker */
     $checker = self::getMock('\EnvCheck\Checker\PhpVersion', array('getCurrentVersion'), array('5.4', '>='));
     $checker
-      ->expects(self::once())
+      ->expects($this->once())
       ->method('getCurrentVersion')
       ->will($this->returnValue('5.3'));
       
