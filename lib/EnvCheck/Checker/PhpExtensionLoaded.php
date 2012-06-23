@@ -13,6 +13,9 @@ use EnvCheck\Result;
  */
 class PhpExtensionLoaded extends AbstractChecker {
   
+  /**
+   * @var string
+   */
   protected $extensionName;
   
   /**
