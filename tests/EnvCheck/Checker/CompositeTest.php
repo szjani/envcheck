@@ -19,7 +19,7 @@ class CompositeTest extends PHPUnit_Framework_TestCase {
   
   public function testCheckWithCheckerWithoutBreak() {
     $insideRes = new \EnvCheck\Result\Failed("failed", 1);
-    $checker = $this->getMock('EnvCheck\Checker', array('check'));
+    $checker = $this->getMock('EnvCheck\Checker', array('check', 'addObserver', 'removeObserver'));
     $checker
       ->expects($this->once())
       ->method('check')
@@ -31,14 +31,14 @@ class CompositeTest extends PHPUnit_Framework_TestCase {
   
   public function testCheckWithCheckersWithoutBreak() {
     $insideRes1 = new \EnvCheck\Result\Failed("failed", 1);
-    $checker1 = $this->getMock('EnvCheck\Checker', array('check'));
+    $checker1 = $this->getMock('EnvCheck\Checker', array('check', 'addObserver', 'removeObserver'));
     $checker1
       ->expects($this->once())
       ->method('check')
       ->will($this->returnValue($insideRes1));
     
     $insideRes2 = new \EnvCheck\Result\Success("success", 2);
-    $checker2 = $this->getMock('EnvCheck\Checker', array('check'));
+    $checker2 = $this->getMock('EnvCheck\Checker', array('check', 'addObserver', 'removeObserver'));
     $checker2
       ->expects($this->once())
       ->method('check')
@@ -51,14 +51,14 @@ class CompositeTest extends PHPUnit_Framework_TestCase {
   
   public function testCheckWithCheckersWithBreak() {
     $insideRes1 = new \EnvCheck\Result\Failed("failed", 1);
-    $checker1 = $this->getMock('EnvCheck\Checker', array('check'));
+    $checker1 = $this->getMock('EnvCheck\Checker', array('check', 'addObserver', 'removeObserver'));
     $checker1
       ->expects($this->once())
       ->method('check')
       ->will($this->returnValue($insideRes1));
     
     $insideRes2 = new \EnvCheck\Result\Success("success", 2);
-    $checker2 = $this->getMock('EnvCheck\Checker', array('check'));
+    $checker2 = $this->getMock('EnvCheck\Checker', array('check', 'addObserver', 'removeObserver'));
     $checker2
       ->expects($this->never())
       ->method('check')
@@ -73,7 +73,7 @@ class CompositeTest extends PHPUnit_Framework_TestCase {
   public function testCheckNotifyWithChecker() {
     $insideRes = new \EnvCheck\Result\Failed("inside-failed", 1);
     
-    $checker = $this->getMock('EnvCheck\Checker', array('check'));
+    $checker = $this->getMock('EnvCheck\Checker', array('check', 'addObserver', 'removeObserver'));
     $checker
       ->expects($this->once())
       ->method('check')

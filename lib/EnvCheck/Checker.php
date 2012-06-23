@@ -17,4 +17,20 @@ interface Checker {
    */
   function check();
   
+  /**
+   * Add an observer.
+   * 
+   * @param \EnvCheck\CheckerObserver $observer
+   * @return \EnvCheck\AbstractChecker
+   */
+  function addObserver(CheckerObserver $observer);
+  
+  /**
+   * Remove an observer.
+   * 
+   * @param CheckerObserver $observer
+   * @return \EnvCheck\AbstractChecker 
+   */
+  function removeObserver(CheckerObserver $observer);
+  
 }
