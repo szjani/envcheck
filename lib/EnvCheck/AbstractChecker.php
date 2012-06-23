@@ -2,6 +2,7 @@
 namespace EnvCheck;
 use EnvCheck\Result\Failed;
 use EnvCheck\Result\Success;
+use SplObjectStorage;
 
 /**
  * Abstract implementation of Checker.
@@ -14,6 +15,12 @@ use EnvCheck\Result\Success;
 abstract class AbstractChecker implements Checker {
 
   /**
+   * Used for passed results.
+   * The same as INFO priority in Zend_Log 
+   */
+  const PASSED = 6;
+  
+  /**
    * Priority of the checker
    * @var int
    */
@@ -21,15 +28,16 @@ abstract class AbstractChecker implements Checker {
   
   /**
    * Observers to pass the result of checking
-   * @var array
+   * @var SplObjectStorage
    */
-  protected $observers = array();
+  protected $observers;
   
   /**
    * @param int $priority
    */
   public function __construct($priority) {
     $this->priority = (int)$priority;
+    $this->observers = new SplObjectStorage();
   }
   
   /**
@@ -56,7 +64,16 @@ abstract class AbstractChecker implements Checker {
    * @return \EnvCheck\AbstractChecker
    */
   public function addObserver(CheckerObserver $observer) {
-    $this->observers[] = $observer;
+    $this->observers->attach($observer);
+    return $this;
+  }
+  
+  /**
+   * @param CheckerObserver $observer
+   * @return \EnvCheck\AbstractChecker 
+   */
+  public function removeObserver(CheckerObserver $observer) {
+    $this->observers->detach($observer);
     return $this;
   }
   
@@ -69,7 +86,7 @@ abstract class AbstractChecker implements Checker {
    */
   protected function createResult($message, $valid = true) {
     return $valid
-      ? new Success($message, $this->priority)
+      ? new Success($message, self::PASSED)
       : new Failed($message, $this->priority);
   }
 
