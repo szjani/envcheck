@@ -31,8 +31,10 @@ class FileMode extends AbstractChecker {
   /**
    * @param SplFileInfo $file
    * @param int $mode Flag: READABLE|WRITABLE|EXECUTABLE|ALL
+   * @param int $priority 
    */
-  public function __construct(SplFileInfo $file, $mode) {
+  public function __construct(SplFileInfo $file, $mode, $priority = 1) {
+    parent::__construct($priority);
     $this->file = $file;
     $this->mode = $mode;
   }
