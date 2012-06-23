@@ -50,7 +50,7 @@ class FileMode extends AbstractChecker {
            && (($this->mode & self::EXECUTABLE) ? $executable : !$executable);
     
     return $this->createResult(
-      sprintf("Check file access for file '%s'", $this->file->getPathname()),
+      sprintf("Check file access (%d) for file '%s'", $this->mode, $this->file->getPathname()),
       $passed
     );
   }
