@@ -11,7 +11,14 @@ $composite = new Checker\Composite(1);
 $composite
   ->add(new Checker\PhpVersion('5.4', '>'))
   ->add(new Checker\PhpExtensionLoaded('pdo_mysql'))
-  ->add(new Checker\FileMode(new SplFileInfo(__FILE__), Checker\FileMode::ALL));
+  ->add(new Checker\FileMode(new SplFileInfo(__FILE__), Checker\FileMode::ALL))
+  ->add(new Checker\IsInIncludePath('/development/Frameworks/ZF_1.11_svn/library'))
+  ->add(new Checker\ZendDbConnect(new Zend_Db_Adapter_Pdo_Mysql(array(
+    'host' => 'localhost',
+    'username' => 'root',
+    'password' => 'admin',
+    'dbname' => 'mysql'
+  ))));
 
 // write the result to stdout with simple CliWriter
 $cliWriter = new CliWriter();
