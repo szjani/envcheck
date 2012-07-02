@@ -10,31 +10,34 @@ namespace EnvCheck;
  */
 abstract class AbstractResult implements Result {
 
-  private $message;
-  
-  private $priority;
-  
-  /**
-   * @param string $message
-   * @param int $priority 
-   */
-  public function __construct($message, $priority) {
-    $this->message = $message;
-    $this->priority = $priority;
-  }
-  
-  /**
-   * @return string
-   */
-  public function getMessage() {
-    return $this->message;
-  }
+    private $message;
 
-  /**
-   * @return int
-   */
-  public function getPriority() {
-    return $this->priority;
-  }
+    private $priority;
+
+    /**
+     * @param string $message
+     * @param int $priority 
+     */
+    public function __construct($message, $priority)
+    {
+        $this->message = $message;
+        $this->priority = $priority;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
 
 }

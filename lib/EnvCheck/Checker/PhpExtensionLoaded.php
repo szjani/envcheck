@@ -1,5 +1,6 @@
 <?php
 namespace EnvCheck\Checker;
+
 use EnvCheck\AbstractChecker;
 use EnvCheck\Result;
 
@@ -12,35 +13,38 @@ use EnvCheck\Result;
  * @author      Szurovecz János <szjani@szjani.hu>
  */
 class PhpExtensionLoaded extends AbstractChecker {
-  
-  /**
-   * @var string
-   */
-  protected $extensionName;
-  
-  /**
-   * @param string $extensionName
-   * @param int $priority 
-   */
-  public function __construct($extensionName, $priority = 1) {
-    parent::__construct($priority);
-    $this->extensionName = $extensionName;
-  }
-  
-  /**
-   * @return boolean
-   */
-  protected function isLoaded() {
-    return extension_loaded($this->extensionName);
-  }
-  
-  /**
-   * @return \EnvCheck\Result 
-   */
-  protected function currentCheck() {
-    return $this->createResult(
-      sprintf("Whether PHP extension '%s' has been loaded", $this->extensionName),
-      $this->isLoaded() 
-    );
-  }
+
+    /**
+     * @var string
+     */
+    protected $extensionName;
+
+    /**
+     * @param string $extensionName
+     * @param int $priority 
+     */
+    public function __construct($extensionName, $priority = 1)
+    {
+        parent::__construct($priority);
+        $this->extensionName = $extensionName;
+    }
+
+    /**
+     * @return boolean
+     */
+    protected function isLoaded()
+    {
+        return extension_loaded($this->extensionName);
+    }
+
+    /**
+     * @return \EnvCheck\Result 
+     */
+    protected function currentCheck()
+    {
+        return $this->createResult(
+            sprintf("Whether PHP extension '%s' has been loaded", $this->extensionName), $this->isLoaded()
+        );
+    }
+
 }

@@ -9,10 +9,9 @@ namespace EnvCheck;
  * @author      Szurovecz János <szjani@szjani.hu>
  */
 interface CheckerObserver {
-  
-  /**
-   * @param Result $res 
-   */
-  function notify(Result $res);
-  
+
+    /**
+     * @param Result $res 
+     */
+    public function notify(Result $res);
 }

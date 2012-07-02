@@ -9,28 +9,27 @@ namespace EnvCheck;
  * @author      Szurovecz János <szjani@szjani.hu>
  */
 interface Checker {
-  
-  /**
-   * Whether it is valid or not.
-   * 
-   * @return \EnvCheck\Result
-   */
-  function check();
-  
-  /**
-   * Add an observer.
-   * 
-   * @param \EnvCheck\CheckerObserver $observer
-   * @return \EnvCheck\Checker
-   */
-  function addObserver(CheckerObserver $observer);
-  
-  /**
-   * Remove an observer.
-   * 
-   * @param CheckerObserver $observer
-   * @return \EnvCheck\Checker
-   */
-  function removeObserver(CheckerObserver $observer);
-  
+
+    /**
+     * Whether it is valid or not.
+     * 
+     * @return \EnvCheck\Result
+     */
+    public function check();
+
+    /**
+     * Add an observer.
+     * 
+     * @param \EnvCheck\CheckerObserver $observer
+     * @return \EnvCheck\Checker
+     */
+    public function addObserver(CheckerObserver $observer);
+
+    /**
+     * Remove an observer.
+     * 
+     * @param CheckerObserver $observer
+     * @return \EnvCheck\Checker
+     */
+    public function removeObserver(CheckerObserver $observer);
 }

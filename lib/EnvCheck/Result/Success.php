@@ -1,5 +1,6 @@
 <?php
 namespace EnvCheck\Result;
+
 use EnvCheck\AbstractResult;
 
 /**
@@ -11,11 +12,13 @@ use EnvCheck\AbstractResult;
  * @author      Szurovecz János <szjani@szjani.hu>
  */
 class Success extends AbstractResult {
-  
-  /**
-   * @return boolean 
-   */
-  public function passed() {
-    return true;
-  }
+
+    /**
+     * @return boolean 
+     */
+    public function passed()
+    {
+        return true;
+    }
+
 }
